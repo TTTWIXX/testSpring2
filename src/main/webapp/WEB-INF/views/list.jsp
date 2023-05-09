@@ -10,12 +10,34 @@
 
 </head>
 <style>
+    .head-wrapper {
+        width: 100vh;
+        margin: 100px auto;
+        position: relative;
+    }
+
+    .head-wrapper #save-Btn {
+        position: absolute;
+        right: 50px;
+        top: 50px;
+    }
+
+    .card-wrapper {
+        margin: 200px auto;
+        border: 2px solid #000;
+        width: 1000px;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+
+    }
+
     .main-box {
         border: 1px solid #000;
         width: 200px;
         height: 200px;
         padding: 20px;
-        margin: 200px auto;
+        margin: 50px 10px;
     }
 
     .main-box #title {
@@ -46,20 +68,38 @@
     }
 </style>
 
+
 <body>
+    <!--title -->
+    <header class="head-wrapper">
+        <ol>
+            <h1>요것은 테스트용 페이지입니다~</h1>
+            <button id="save-Btn" type="button">새글 추가</button>
+        </ol>
+
+    </header>
+
     <!-- end card container -->
 
-
-    <c:forEach var="a" items="allList">
-        <div class="main-box">
-            <div id="title">${a.title}</div>
-            <div class="date-count-wrapper">
-                <div id="viewCount">${a.viewCount}</div>
-                <div id="date">date</div>
+    <div class="card-wrapper">
+        <c:forEach var="a" items="${allList}">
+            <div class="main-box">
+                <div id="title">${a.shortTitle}</div>
+                <div class="date-count-wrapper">
+                    <div id="viewCount">${a.viewCount}</div>
+                    <div id="date">${a.date}</div>
+                </div>
+                <div id="content">${a.shortContent}</div>
             </div>
-            <div id="content">${a.content}</div>
-        </div>
-    </c:forEach>
+        </c:forEach>
+    </div>
+
+    <script>
+        const $save = document.getElementById('save-Btn');
+        $save.onclick = function () {
+            window.location.href = '/test2/write/'
+        }
+    </script>
 
 </body>
 

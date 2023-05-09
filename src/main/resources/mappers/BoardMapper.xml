@@ -10,4 +10,11 @@
 
     </select>
 
+    <insert id="save">
+        INSERT INTO tbl_board
+        (title,content)
+        VALUES
+        (#{title},#{content})
+    </insert>
+
 </mapper>

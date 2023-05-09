@@ -1,5 +1,6 @@
 package com.testSpring2.testSpring2.mvc.controller;
 
+import com.testSpring2.testSpring2.mvc.dto.BoardListRequestDTO;
 import com.testSpring2.testSpring2.mvc.entity.Board;
 import com.testSpring2.testSpring2.mvc.service.BoardService;
 import lombok.RequiredArgsConstructor;
@@ -21,10 +22,17 @@ public class BoardController {
     @GetMapping("/list")
     public String showList(Model model){
 
-        List<Board> all = boardService.findAll();
+        List<BoardListRequestDTO> all = boardService.findAll();
         log.info("list<board> : {}",all);
         model.addAttribute("allList",all);
         return "/list";
+    }
+
+    //새글쓰는 페이지를 보여줌
+    @GetMapping("/write")
+    public String save(){
+
+        return "/write";
     }
 
 
